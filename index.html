@@ -5,9 +5,78 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>My list</title>
-    <link rel="stylesheet" href="styles/mystyle.css">
+    <link rel="stylesheet" href="./styles/mystyle.css">
 </head>
 <body>
+
+    <h1>Your List</h1>
+
+    <button type="button" class="button" id="addCardButton"> Add List</button>
+
+    <div class="cardList">
         
+    </div>
+
+
+
+
+    <dialog id="cardDialog">
+        <form method="dialog" id="cardDialogForm">
+            <fieldset>
+
+                <legend>Add list</legend>
+
+                <label for="cardname">List Name</label>
+                <input type="text" class="inpitField dialogField" id="cardname" placeholder="Type in the name of your list" required>
+
+                <label for="cardtype">List Type</label>
+                <input type="text" class="inpitField dialogField" id="cardtype" placeholder="Type in the type of your list" required>
+                
+                <br><br>
+
+                <div class="dialogBtnsPanel">
+                    <button type="button" id="cancelButton" class="button"> Cancel </button>
+                    <button type="submit" id="saveButton" class="button"> Save </button>
+                </div>
+
+            </fieldset>
+        </form>
+    </dialog>
+
+    
+    <dialog id="confirmDialog">
+        <form method="dialog" id="confirmDialogForm">
+            <fieldset>
+                <legend>Delete List?</legend>
+                Do you really want to delete this List?
+                <br><br>
+                <div class="dialogBtnsPanel">
+                    <button type="submit" class="button"> Yes </button>
+                    <button type="button" id="cancelConfirmBtn" class="button"> No </button>
+                </div>
+            </fieldset>
+        </form>
+    </dialog>
+
+    <form>
+        <input type="hidden" id="hiddenSnField">
+    </form>
+
+    <div id="snackbar"> Some message </div>
+
+
+
+    <script type="module">
+        import Model from './models/model.js'
+        import Controller from './controllers/controller.js'
+        import View from './views/view.js'
+    
+        window.onload = function () {
+            const model = new Model ();
+            const controller = new Controller();
+            const view = new View(controller);
+            controller.initialize(model,view);
+    }
+    </script>
 </body>
 </html>
